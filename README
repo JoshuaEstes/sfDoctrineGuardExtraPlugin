@@ -1,0 +1,20 @@
+sfDoctrineGuardExtraPlugin
+
+-= Features =-
+* Limits the number of unsuccessful sign-on attempts
+* Forces password change
+* Restricts the number of passwords that users cannot reuse
+* Expires password after a number of days
+* Send email before password expires
+* Once password expires the user becomes inactive
+* User report screen
+
+-= Installation =-
+* add the following to you filters.yml file
+
+    securityExtra:
+      class: sfGuardSecurityExtraFilter
+
+* You will need to extend the current sfGuardAuth module to override the signin
+  action. You need to make sure the if the form is not valid that it notifies
+  the dispatcher of the event 'user.failed_authentication'

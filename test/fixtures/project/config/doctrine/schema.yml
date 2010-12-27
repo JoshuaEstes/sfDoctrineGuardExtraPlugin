@@ -1,0 +1,22 @@
+sfGuardLoginAttempt:
+  actAs: [Timestampable]
+  columns:
+    ip_address: string(15)
+    host_name: string(255)
+
+sfGuardUserPassword:
+  actAs: [Timestampable]
+  columns:
+    user_id: integer
+    algorithm:
+      type: string(128)
+      default: sha1
+      notnull: true
+    salt: string(128)
+    password: string(128)
+  relations:
+    User:
+      class: sfGuardUser
+      local: user_id
+      foreign: id
+      type: one

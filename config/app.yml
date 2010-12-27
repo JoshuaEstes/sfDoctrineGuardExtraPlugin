@@ -1,0 +1,39 @@
+# defaults for sfDoctrineGuardExtraPlugin
+all:
+  sf_guard_extra_plugin:
+    # enable/disable
+    enabled: false
+    ##
+    # Brute force settings
+    ##
+    # lock account after X failed login attempts
+    login_attempts: 10
+    # lock account for X seconds once the failed login attempts is met
+    # 600 seconds = 10 minutes
+    lock_for: 600
+    # If user has tried %LOGIN_ATTEMPTS% in the past X seconds
+    lock_timeout: 300
+    # module/action to send user if they are locked out
+    locked_out_module: sfGuardAuthExtra
+    locked_out_action: lockedOut
+    ##
+    # Password reuse settings
+    ##
+    # exclude super admins from password reuse
+    password_reuse_super_admin: false
+    # restrict the re-use of passwords
+    password_reuse_max: 8
+    ##
+    # password expiration settings
+    ##
+    # expire super admin passwords
+    password_expiration_super_admin: false
+    # days until password expires
+    password_expiration_date: 100
+    # send email X days before password expires (cron job)
+    password_expiration_email: 15
+    # the email that gets set as a from address
+    password_expiration_email_from: no-reply@domain.tdl
+    # if a user tries to login and the password is expired, show this module/action
+    password_expiration_module: sfGuardAuthExtra
+    password_expiration_action: passwordExpired
